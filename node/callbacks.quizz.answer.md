@@ -69,6 +69,7 @@ function readFileThenDo(next) {
 try {
   readFileThenDo((_, data) => console.log(data));
 } catch (err) {
+  console.log("666?");
   console.error(err);
 }
 ```

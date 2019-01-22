@@ -6,7 +6,9 @@ Make it run without errors but you cannot change the location of the `let` state
 
 ```js
 function doAsyncTask(cb) {
-  cb();
+  //setTimeout(cb, 0);
+  // or:
+  setImmediate(cb);
 }
 doAsyncTask(_ => console.log(message));
 
@@ -22,7 +24,13 @@ const fs = require("fs");
 
 function readFileThenDo(next) {
   fs.readFile("./blah.nofile", (err, data) => {
-    next(data);
+    if (err) {
+      // next(err);
+      //or :
+      // throw err;
+      //or :
+      console.error(err);
+    }
   });
 }
 
@@ -45,7 +53,13 @@ function readFileThenDo(next) {
   });
 }
 // Hint use try..catch
-readFileThenDo(data => {
-  console.log(data);
-});
+
+// You cannot use try/catch with callbacks
+try {
+  readFileThenDo((_, data) => console.log(data));
+} catch (err) {
+  console.log("666?");
+  //The above line won't get executed because readFileTheDo is async so there's no err to catch immediately when the readFileTheDo ran
+  console.error(err);
+}
 ```
