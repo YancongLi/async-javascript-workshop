@@ -152,7 +152,7 @@ prom
 // 'done2'
 ```
 
-* We **have** to return something from each `then`, otherwise it doesn't get passed to the next `then`
+- We **have** to return something from each `then`, otherwise it doesn't get passed to the next `then`
 
 ```js
 const prom = Promise.resolve("done");
@@ -165,7 +165,7 @@ prom
 // 'undefined'
 ```
 
-* This is different to forking a promise chain
+- This is different to forking a promise chain
 
 ```js
 const prom = Promise.resolve("done");
@@ -251,6 +251,7 @@ In preview
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally
 
 ```js
+console.log(process.versions);
 Promise.resolve("done")
   .then(val => {
     throw new Error("fail");
@@ -298,7 +299,7 @@ Promise.race([car1, car2, car3]).then(value => {
 
 ```js
 let car1 = new Promise((_, reject) =>
-  setTimeout(reject, 3000, "Car 1 Crashed.")
+  setTimeout(reject, 2000, "Car 1 Crashed.")
 );
 let car2 = new Promise(resolve => setTimeout(resolve, 1000, "Car 2."));
 let car3 = new Promise(resolve => setTimeout(resolve, 3000, "Car 3."));
