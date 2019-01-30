@@ -127,6 +127,8 @@ async function main() {
 }
 main();
 console.log("Finished");
+
+//In conclusion: You don't add async to the function signature unless you use await inside the function
 ```
 
 ## Async Iterators
