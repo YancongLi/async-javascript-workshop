@@ -2,10 +2,10 @@
 
 ## RunToCompletion vs RunStopRun
 
-* We've assumed something fundamental, one a function starts running it will complete/error/return before any other JS code can run.
-* A _generator_ is a function that can be paused in the middle of running, let you do something else, and then resumed later on from exactly the point it was paused.
-* Nothing can pause a generator from the outside, only a generator can pause itself by using the `yield` keyword.
-* Once it's yielded though only the code it yielded to can resume it's function.
+- We've assumed something fundamental, one a function starts running it will complete/error/return before any other JS code can run.
+- A _generator_ is a function that can be paused in the middle of running, let you do something else, and then resumed later on from exactly the point it was paused.
+- Nothing can pause a generator from the outside, only a generator can pause itself by using the `yield` keyword.
+- Once it's yielded though only the code it yielded to can resume it's function.
 
 ## Simple example to show how yield can pause execution midflow
 
@@ -47,13 +47,13 @@ console.log(it.next());
 ## Use as an Iterator
 
 ```js
-function* range() {
-  for (let i = 0; i < 10; i++) {
+function* range(n) {
+  for (let i = 0; i < n; i++) {
     yield i;
   }
 }
 
-for (let x of range()) {
+for (let x of range(5)) {
   console.log(x); // Just prints the value
 }
 ```
